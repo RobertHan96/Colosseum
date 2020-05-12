@@ -22,12 +22,14 @@
         android:hint="@string/hint_email"/>
 
     <TextView
+        android:id="@+id/emailEdt"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/password"/>
 
     <EditText
+        android:id="@+id/passwordEdt"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,11 +37,13 @@
         android:hint="@string/hint_password"/>
 
     <Button
+        android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"/>
 
     <Button
+        android:id="@+id/signUpBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_up"/>

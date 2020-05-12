@@ -7,7 +7,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
 import java.io.IOException
 
-class ConnectServer {
+class ServerUtil {
 
     interface JsonResponseHandler {
         fun onResponse(json: JSONObject)
