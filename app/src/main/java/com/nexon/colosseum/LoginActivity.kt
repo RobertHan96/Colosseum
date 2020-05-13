@@ -1,5 +1,6 @@
 package com.nexon.colosseum
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -18,7 +19,8 @@ class LoginActivity : BaseActivity() {
 
     override fun setupEvents() {
         signUpBtn.setOnClickListener {
-
+            val myIntent = Intent(mContext, SignUpActivity::class.java)
+            startActivity(myIntent)
         }
 
 
