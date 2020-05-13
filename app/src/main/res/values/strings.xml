@@ -8,4 +8,12 @@
     <string name="sign_up">회원가입</string>
     <string name="login_success_message">로그인 성공</string>
     <string name="auto_login">자동 로그인</string>
+    <string name="email_text">이메일</string>
+    <string name="email_hint">이메일</string>
+    <string name="email_dupe_check_text">중복 확인을 해주세요</string>
+    <string name="dupe_check_btn">중복확인</string>
+    <string name="pw_text">비밀번호</string>
+    <string name="pw_hint">특수문자를 포함한 8자리</string>
+    <string name="pw_confirm_text">비밀번호 확인</string>
+    <string name="sign_up_next_btn">다음</string>
 </resources>
