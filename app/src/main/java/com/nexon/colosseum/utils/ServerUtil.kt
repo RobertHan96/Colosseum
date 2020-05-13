@@ -59,20 +59,18 @@ class ServerUtil {
 
         }
 
-        fun getRequestMyInfo(context: Context, token:String, handler: JsonResponseHandler?) {
+        fun getRequestIsEmailDuplecated(context: Context, type : String , value:String, handler: JsonResponseHandler?) {
 
             val client = OkHttpClient()
-            val urlBuilder = "${BASE_URL}/my_info".toHttpUrlOrNull()!!.newBuilder()
-            urlBuilder.addEncodedQueryParameter("device_token", "임시기기토큰")
-            urlBuilder.addEncodedQueryParameter("os", "Android")
+            val urlBuilder = "${BASE_URL}/user_check".toHttpUrlOrNull()!!.newBuilder()
+            urlBuilder.addEncodedQueryParameter("type", type)
+            urlBuilder.addEncodedQueryParameter("value", value)
 
             val urlStr = urlBuilder.build().toString()
 
-//            Log.d("완성된주소", urlStr)
 
             val request = Request.Builder()
                 .url(urlStr)
-                .header("X-Http-Token", token)
                 .build()
 
             client.newCall(request).enqueue(object : Callback {
@@ -116,6 +114,7 @@ class ServerUtil {
         }
 
     }
+
 
 
 }

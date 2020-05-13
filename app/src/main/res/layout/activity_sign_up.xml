@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/isDupeEmailText"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -50,18 +51,31 @@
     android:orientation="horizontal"
     android:gravity="center_vertical">
 
-    <EditText
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:hint="@string/email_hint"
-        android:background="@drawable/gray_border_box"/>
+    <FrameLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dupe_check_btn"/>
+        <EditText
+            android:id="@+id/emailEdt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="@string/email_hint"
+            android:background="@drawable/gray_border_box"/>
+
+        <Button
+            android:id="@+id/email_dupe_check_btn"
+            android:layout_marginRight="7dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:text="@string/dupe_check_btn"
+            android:background="@drawable/gray_border_box_for_pressed"
+            />
+
+    </FrameLayout>
+
 
 </LinearLayout>
 
@@ -93,11 +107,14 @@
         android:gravity="center_vertical">
 
         <EditText
+            android:id="@+id/passwordEdt"
+            android:layout_marginTop="5dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:hint="@string/pw_hint"
+            android:inputType="textEmailAddress"
             android:background="@drawable/gray_border_box"/>
     </LinearLayout>
 
@@ -129,6 +146,8 @@
         android:gravity="center_vertical">
 
         <EditText
+            android:id="@+id/passwordConfirmEdt"
+            android:layout_marginTop="5dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

@@ -11,6 +11,8 @@
     <string name="email_text">이메일</string>
     <string name="email_hint">이메일</string>
     <string name="email_dupe_check_text">중복 확인을 해주세요</string>
+    <string name="email_is_not_dupe_text">사용 가능한 이메일입니다.</string>
+    <string name="email_is_dupe_text">이미 사용중인 이메일입니다.</string>
     <string name="dupe_check_btn">중복확인</string>
     <string name="pw_text">비밀번호</string>
     <string name="pw_hint">특수문자를 포함한 8자리</string>
