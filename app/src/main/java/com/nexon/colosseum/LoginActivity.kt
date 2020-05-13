@@ -17,39 +17,53 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
-        autoLoginCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
-            ContextUtil.setAutoLogin(mContext, isChecked)
+        signUpBtn.setOnClickListener {
 
         }
 
-        loginBtn.setOnClickListener {
-            val email = emailEdt.text.toString()
-            val password = passwordEdt.text.toString()
 
-            ServerUtil.postRequestLogin(mContext, email, password, object : ServerUtil.JsonResponseHandler{
+        autoLoginCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            ContextUtil.setAutoLogin(mContext, isChecked)
+        }
+
+        loginBtn.setOnClickListener {
+
+            val email = emailEdt.text.toString()
+            val pw = passwordEdt.text.toString()
+
+            ServerUtil.postRequestLogin(mContext, email, pw, object  : ServerUtil.JsonResponseHandler {
                 override fun onResponse(json: JSONObject) {
-                    Log.d("서버 응답",  json.toString())
+                    Log.d("로그인응답", json.toString())
 
                     val code = json.getInt("code")
 
                     if (code == 200) {
+
                         val data = json.getJSONObject("data")
                         val token = data.getString("token")
+
                         ContextUtil.setUserToken(mContext, token)
 
                         runOnUiThread {
                             Toast.makeText(mContext, resources.getString(R.string.login_success_message), Toast.LENGTH_SHORT).show()
                         }
 
-                    } else {
+
+                    }
+                    else {
                         val message = json.getString("message")
-                        runOnUiThread{
+
+                        runOnUiThread {
                             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                         }
+
                     }
+
                 }
 
             })
+
+
         }
 
     }
