@@ -18,4 +18,5 @@
     <string name="pw_hint">특수문자를 포함한 8자리</string>
     <string name="pw_confirm_text">비밀번호 확인</string>
     <string name="sign_up_next_btn">다음</string>
+    <string name="change_profile_img">프로필 이미지 변경</string>
 </resources>
