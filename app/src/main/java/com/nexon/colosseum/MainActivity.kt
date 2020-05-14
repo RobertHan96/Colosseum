@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.nexon.colosseum.utils.ContextUtil
+import com.nexon.colosseum.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
     val REQ = 1000
@@ -32,14 +35,47 @@ class MainActivity : BaseActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val myToken = ContextUtil.getUserToken(mContext)
+        Log.d("토큰", myToken)
+
+        ServerUtil.getRequestMainInfo(mContext, object : ServerUtil.JsonResponseHandler{
+            override fun onResponse(json: JSONObject) {
+                Log.d("메인 정보 불러오기 결과", json.toString())
+                val code = json.getInt("code")
+
+                if (code == 200) {
+                    val data = json.getJSONObject("data")
+                    val user = data.getJSONObject("user")
+                    val topic = data.getJSONObject("topic")
+                    val nickName = user.getString("nick_name")
+                    val topicName = topic.getString("title")
+
+                    runOnUiThread {
+                        myNickNameText.text = nickName
+                        thisWeekTopicTitle.text = topicName
+                    }
+
+                }
+
+            }
+
+        })
+    }
+
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == REQ) {
+        if (requestCode == REQ) {
             if (resultCode == Activity.RESULT_OK) {
-                Log.d("이미지 선택 결과", data?.data.toString())
                 Glide.with(mContext).load(data?.data).into(myProfileImg)
+
             }
         }
+
     }
+
 }

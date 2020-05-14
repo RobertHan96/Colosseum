@@ -7,7 +7,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import com.nexon.colosseum.utils.ServerUtil
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.emailEdt
 import org.json.JSONObject
 
 class SignUpActivity : BaseActivity() {
@@ -21,6 +23,10 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+        signUpBtn.setOnClickListener {
+
+        }
+
         emailEdt.addTextChangedListener(object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 isEmailCheckOk = false

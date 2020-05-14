@@ -85,6 +85,30 @@ class ServerUtil {
             })
         }
 
+        fun getRequestMainInfo(context: Context, handler: JsonResponseHandler?) {
+
+            val client = OkHttpClient()
+            val urlBuilder = "${BASE_URL}/main_info".toHttpUrlOrNull()!!.newBuilder()
+            val urlStr = urlBuilder.build().toString()
+
+
+            val request = Request.Builder()
+                .url(urlStr)
+                .header("X-Http-Token", ContextUtil.getUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+                override fun onResponse(call: Call, response: Response) {
+                    val body = response.body!!.string()
+                    val json = JSONObject(body)
+                    handler?.onResponse(json)
+                }
+            })
+        }
+
         fun getRequestUserCategory(context: Context, handler: JsonResponseHandler?) {
 
             val client = OkHttpClient()
