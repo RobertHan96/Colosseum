@@ -51,10 +51,12 @@ class MainActivity : BaseActivity() {
                     val topic = data.getJSONObject("topic")
                     val nickName = user.getString("nick_name")
                     val topicName = topic.getString("title")
+                    val topicImg = topic.getString("img_url")
 
                     runOnUiThread {
                         myNickNameText.text = nickName
                         thisWeekTopicTitle.text = topicName
+                        Glide.with(mContext).load(topicImg).into(thisWeekTopicImg)
                     }
 
                 }
