@@ -2,6 +2,7 @@ package com.nexon.colosseum
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +13,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+        myProfileImg.
 
     }
 

@@ -40,6 +40,7 @@
                 app:civ_border_color="@color/black"
                 app:civ_border_width="2dp"
                 android:src="@mipmap/ic_launcher"/>
+
             <TextView
                 android:id="@+id/myNickNameText"
                 android:layout_width="wrap_content"
@@ -47,10 +48,12 @@
                 android:text="닉네임"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
+
             <Button
                 android:id="@+id/changeProfileImgBtn"
                 android:layout_width="wrap_content"

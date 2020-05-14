@@ -23,7 +23,9 @@ class SplashActivity : BaseActivity() {
     override fun setValues() {
         Handler().postDelayed({
             if (ContextUtil.getUserToken(mContext) != "" && ContextUtil.isAutoLogin(mContext)) {
-
+                val myIntent = Intent(mContext, MainActivity::class.java)
+                startActivity(myIntent)
+                finish()
             } else {
                 val myIntent = Intent(mContext, LoginActivity::class.java)
                 startActivity(myIntent)
