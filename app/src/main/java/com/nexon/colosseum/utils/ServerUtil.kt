@@ -90,9 +90,10 @@ class ServerUtil {
 
             val client = OkHttpClient()
             val urlBuilder = "${BASE_URL}/main_info".toHttpUrlOrNull()!!.newBuilder()
-            val urlStr = urlBuilder.build().toString()
             urlBuilder.addEncodedQueryParameter("device_token", FirebaseInstanceId.getInstance().token)
             urlBuilder.addEncodedQueryParameter("os", "Android")
+
+            val urlStr = urlBuilder.build().toString()
 
 
             val request = Request.Builder()
