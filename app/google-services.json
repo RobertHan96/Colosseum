@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "147250791171",
+    "firebase_url": "https://colosseum-fb161.firebaseio.com",
+    "project_id": "colosseum-fb161",
+    "storage_bucket": "colosseum-fb161.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147250791171:android:67f89207a52a3f79dedf36",
+        "android_client_info": {
+          "package_name": "com.nexon.colosseum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147250791171-hrmgtuqsh0i3agdb9e6rbp24kg3inis6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nexon.colosseum",
+            "certificate_hash": "48299c1b5e898144f16ec3f37c67d318f97264d4"
+          }
+        },
+        {
+          "client_id": "147250791171-n6tst83ep795cqi989c30iuttgg2kt3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpmEJ9YykChsZ8R1x0yYe7kUBTdViT3c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147250791171-n6tst83ep795cqi989c30iuttgg2kt3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
