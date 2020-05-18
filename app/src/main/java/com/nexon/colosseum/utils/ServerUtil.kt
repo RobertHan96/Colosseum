@@ -18,6 +18,34 @@ class ServerUtil {
 
         private val BASE_URL = "http://ec2-15-165-177-142.ap-northeast-2.compute.amazonaws.com"
 
+
+        fun getUserList(context: Context, handler: JsonResponseHandler?) {
+
+            val client = OkHttpClient()
+            val urlBuilder = "${BASE_URL}/user".toHttpUrlOrNull()!!.newBuilder()
+//            urlBuilder.addEncodedQueryParameter("device_token", FirebaseInstanceId.getInstance().token)
+//            urlBuilder.addEncodedQueryParameter("os", "Android")
+
+            val urlStr = urlBuilder.build().toString()
+
+
+            val request = Request.Builder()
+                .url(urlStr)
+                .header("X-Http-Token", ContextUtil.getUserToken(context))
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+                override fun onResponse(call: Call, response: Response) {
+                    val body = response.body!!.string()
+                    val json = JSONObject(body)
+                    handler?.onResponse(json)
+                }
+            })
+        }
+
         fun postRequestLogin(
             context: Context,
             id: String,
