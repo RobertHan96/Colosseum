@@ -1,7 +1,6 @@
 package com.nexon.colosseum.utils
 
 import android.content.Context
-import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -44,6 +43,40 @@ class ServerUtil {
                     handler?.onResponse(json)
                 }
             })
+        }
+
+        fun postSendPushMessage(context: Context, id: Int, handler: JsonResponseHandler?) {
+            val client = OkHttpClient()
+            val urlStr = "${BASE_URL}/user_check"
+
+            val formBody = FormBody.Builder()
+                .add("user_id", "${id}")
+                .build()
+
+            val request = Request.Builder()
+                .url(urlStr)
+                .post(formBody)
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    val body = response.body!!.string()
+                    val json = JSONObject(body)
+
+                    handler?.onResponse(json)
+
+
+                }
+
+            })
+
+
         }
 
         fun postRequestLogin(

@@ -29,7 +29,7 @@ class UserAdapter (context : Context, resID:Int, list:ArrayList<User>)  : ArrayA
 
         val userEmail = row.findViewById<TextView>(R.id.userNickNameEmail)
 
-        userEmail.text = "${data.nickName}/${data.email}"
+        userEmail.text = "${data.nickName} / ${data.email}"
 
         return  row
     }

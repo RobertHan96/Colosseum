@@ -1,9 +1,8 @@
 package com.nexon.colosseum
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.nexon.colosseum.adapters.UserAdapter
 import com.nexon.colosseum.datas.User
 import com.nexon.colosseum.utils.ServerUtil
@@ -21,6 +20,17 @@ class UserListActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+        userListView.setOnItemClickListener { parent, view, position, id ->
+            val clickedUser = userList.get(position)
+            val clickedUserId = clickedUser.id
+
+            ServerUtil.postSendPushMessage(mContext, clickedUserId, object : ServerUtil.JsonResponseHandler{
+                override fun onResponse(json: JSONObject) {
+                    Toast.makeText(mContext, "${clickedUser}님을 찔렀습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        }
 
     }
 
