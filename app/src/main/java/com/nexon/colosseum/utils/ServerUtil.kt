@@ -2,6 +2,7 @@ package com.nexon.colosseum.utils
 
 import android.content.Context
 import android.util.Log
+import com.google.firebase.iid.FirebaseInstanceId
 import okhttp3.*
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
@@ -90,6 +91,8 @@ class ServerUtil {
             val client = OkHttpClient()
             val urlBuilder = "${BASE_URL}/main_info".toHttpUrlOrNull()!!.newBuilder()
             val urlStr = urlBuilder.build().toString()
+            urlBuilder.addEncodedQueryParameter("device_token", FirebaseInstanceId.getInstance().token)
+            urlBuilder.addEncodedQueryParameter("os", "Android")
 
 
             val request = Request.Builder()
